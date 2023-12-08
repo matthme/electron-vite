@@ -48,7 +48,8 @@
     "format": "prettier --write .",
     "lint": "eslint --ext .ts src/**",
     "typecheck": "tsc --noEmit",
-    "build": "pnpm run lint && rollup -c rollup.config.ts --configPlugin typescript"
+    "build": "pnpm run lint && rollup -c rollup.config.ts --configPlugin typescript",
+    "publish-to-branch": "pnpm run build && rimraf node_modules && gh-pages -d . -b $BRANCH && pnpm install"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
@@ -84,6 +85,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
+    "rimraf": "^3.0.2",
     "rollup": "^4.6.1",
     "rollup-plugin-dts": "^6.1.0",
     "simple-git-hooks": "^2.9.0",
